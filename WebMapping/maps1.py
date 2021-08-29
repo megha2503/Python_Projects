@@ -41,6 +41,7 @@ else 'orange' if 10000000<= x['properties']['POP2005'] < 20000000 else 'red'}))
 
 map.add_child(fg)
 map.add_child(fgp)
+#Adding layers
 map.add_child(folium.LayerControl())
 #map.save("Maps_popup.html")   
 map.save("Maps_popup_advance.html")  
