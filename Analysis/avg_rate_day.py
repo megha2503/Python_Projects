@@ -71,8 +71,9 @@ chart_def = """
 
 def app():
     wp = jp.QuasarPage()
-    h1 = jp.QDiv(a=wp, text="Analysis of Couse Reviews", classes="text-h3 text-right q-pa-md")
-    p1 = jp.QDiv(a=wp, text="Graphs represents the course review analysis", classes="text-right q-pa-md")
+    h1 = jp.QDiv(a=wp, text="Analysis of Students interest in the field of DataScience", classes="text-h3 text-right q-pa-md")
+    p1 = jp.QDiv(a=wp, text="Graphs represents the statistics on Python and ML knowledge", classes="text-center")
+    
     hc = jp.HighCharts(a=wp, options=chart_def)
     print(hc.options.title.text)
     hc.options.title.text = "Average Rating by Day"
