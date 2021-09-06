@@ -4,30 +4,9 @@ User can:
 View all record, search an entry, add entry, update entry, delete, close
 """
 from tkinter import *
-import backend
+from backend import Database
 
-def view_command():
-    list1.delete(0, END)
-    for row in backend.view():
-        list1.insert(END,row)
-
-def search_command():
-    list1.delete(0, END)
-    for row in backend.search(title_text.get(),author_text.get(),year_text.get(),isbn_text.get()):
-        list1.insert(END,row)
-
-def add_command():
-    #for row in backend.insert(title_text.get(),author_text.get(),year_text.get(),isbn_text.get()):
-    backend.insert(title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
-    list1.delete(0, END)
-    list1.insert(END,title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
-
-def delete_command():
-    backend.delete(get_selected_row()[0],selected_tuple[1],selected_tuple[2],selected_tuple[3],selected_tuple[4])
-
-def update_command():
-    backend.update(selected_tuple[0], title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
-    print(selected_tuple[0], selected_tuple[1],selected_tuple[2], selected_tuple[3],selected_tuple[4])
+database = Database("books.db")
 
 def get_selected_row(event):
     global selected_tuple
@@ -45,6 +24,31 @@ def get_selected_row(event):
     print(selected_tuple)
 
     return(selected_tuple)
+
+
+def view_command():
+    list1.delete(0, END)
+    for row in database.view():
+        list1.insert(END,row)
+
+def search_command():
+    list1.delete(0, END)
+    for row in database.search(title_text.get(),author_text.get(),year_text.get(),isbn_text.get()):
+        list1.insert(END,row)
+
+def add_command():
+    #for row in database.insert(title_text.get(),author_text.get(),year_text.get(),isbn_text.get()):
+    database.insert(title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
+    list1.delete(0, END)
+    list1.insert(END,title_text.get(),author_text.get(),year_text.get(),isbn_text.get())
+
+def delete_command():
+    database.delete(get_selected_row()[0],selected_tuple[1],selected_tuple[2],selected_tuple[3],selected_tuple[4])
+
+def update_command():
+    database.update(selected_tuple[0], title_text.get(), author_text.get(), year_text.get(), isbn_text.get())
+    print(selected_tuple[0], selected_tuple[1],selected_tuple[2], selected_tuple[3],selected_tuple[4])
+
 
 
 window = Tk()
